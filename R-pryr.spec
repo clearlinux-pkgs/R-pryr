@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.2
-Release  : 14
+Release  : 15
 URL      : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Summary  : Tools for Computing on the Language
@@ -14,7 +14,9 @@ Requires: R-pryr-lib
 Requires: R-Rcpp
 Requires: R-stringr
 Requires: R-testthat
+Requires: R-crayon
 BuildRequires : R-Rcpp
+BuildRequires : R-crayon
 BuildRequires : R-stringr
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
@@ -41,8 +43,10 @@ lib components for the R-pryr package.
 %install
 rm -rf %{buildroot}
 export LANG=C
-export CFLAGS="$CFLAGS -O3 -flto -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -flto -ffunction-sections -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
