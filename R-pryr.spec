@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.2
-Release  : 15
+Release  : 16
 URL      : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Summary  : Tools for Computing on the Language
@@ -13,12 +13,8 @@ License  : GPL-2.0
 Requires: R-pryr-lib
 Requires: R-Rcpp
 Requires: R-stringr
-Requires: R-testthat
-Requires: R-crayon
 BuildRequires : R-Rcpp
-BuildRequires : R-crayon
 BuildRequires : R-stringr
-BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
 %description
@@ -54,6 +50,7 @@ mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library pryr
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
