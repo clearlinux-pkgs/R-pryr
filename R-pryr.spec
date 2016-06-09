@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.2
-Release  : 16
+Release  : 17
 URL      : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Summary  : Tools for Computing on the Language
@@ -13,7 +13,13 @@ License  : GPL-2.0
 Requires: R-pryr-lib
 Requires: R-Rcpp
 Requires: R-stringr
+Requires: R-magrittr
+Requires: R-R6
+Requires: R-digest
+BuildRequires : R-R6
 BuildRequires : R-Rcpp
+BuildRequires : R-digest
+BuildRequires : R-magrittr
 BuildRequires : R-stringr
 BuildRequires : clr-R-helpers
 
