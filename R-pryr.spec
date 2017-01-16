@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.2
-Release  : 21
+Release  : 22
 URL      : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/pryr_0.1.2.tar.gz
 Summary  : Tools for Computing on the Language
@@ -12,15 +12,7 @@ Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-pryr-lib
 Requires: R-Rcpp
-Requires: R-stringr
-Requires: R-magrittr
-Requires: R-R6
-Requires: R-digest
-BuildRequires : R-R6
 BuildRequires : R-Rcpp
-BuildRequires : R-digest
-BuildRequires : R-magrittr
-BuildRequires : R-stringr
 BuildRequires : clr-R-helpers
 
 %description
@@ -41,9 +33,12 @@ lib components for the R-pryr package.
 %setup -q -c -n pryr
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484546166
 
 %install
 rm -rf %{buildroot}
+export SOURCE_DATE_EPOCH=1484546166
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -53,7 +48,7 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
-R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library pryr
+R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library pryr
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
 export LANG=C
