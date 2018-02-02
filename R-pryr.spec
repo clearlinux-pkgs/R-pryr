@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.3
-Release  : 38
+Release  : 39
 URL      : https://cran.r-project.org/src/contrib/pryr_0.1.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pryr_0.1.3.tar.gz
 Summary  : Tools for Computing on the Language
