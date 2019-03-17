@@ -4,19 +4,24 @@
 #
 Name     : R-pryr
 Version  : 0.1.4
-Release  : 52
+Release  : 53
 URL      : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Summary  : Tools for Computing on the Language
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: R-pryr-lib
+Requires: R-pryr-lib = %{version}-%{release}
 Requires: R-Rcpp
+Requires: R-assertthat
 BuildRequires : R-Rcpp
-BuildRequires : clr-R-helpers
+BuildRequires : R-assertthat
+BuildRequires : buildreq-R
 
 %description
-language at a deeper level.
+# pryr (rhymes with pry bar)
+[![Build Status](https://travis-ci.org/hadley/pryr.png?branch=master)](https://travis-ci.org/hadley/pryr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/pryr)](https://cran.r-project.org/package=pryr)
+[![codecov.io](http://codecov.io/github/hadley/pryr/coverage.svg?branch=master)](http://codecov.io/github/hadley/pryr?branch=master)
 
 %package lib
 Summary: lib components for the R-pryr package.
@@ -34,11 +39,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1518940220
+export SOURCE_DATE_EPOCH=1552782517
 
 %install
+export SOURCE_DATE_EPOCH=1552782517
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1518940220
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -73,8 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library pryr|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  pryr || :
 
 
 %files
@@ -98,7 +102,14 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/pryr/help/pryr.rdx
 /usr/lib64/R/library/pryr/html/00Index.html
 /usr/lib64/R/library/pryr/html/R.css
-/usr/lib64/R/library/pryr/libs/symbols.rds
+/usr/lib64/R/library/pryr/tests/testthat.R
+/usr/lib64/R/library/pryr/tests/testthat/helper-object_size.R
+/usr/lib64/R/library/pryr/tests/testthat/test-active-binding.r
+/usr/lib64/R/library/pryr/tests/testthat/test-bytes.r
+/usr/lib64/R/library/pryr/tests/testthat/test-ftype.r
+/usr/lib64/R/library/pryr/tests/testthat/test-method-from-call.r
+/usr/lib64/R/library/pryr/tests/testthat/test-object_size.R
+/usr/lib64/R/library/pryr/tests/testthat/test-track-copy.R
 
 %files lib
 %defattr(-,root,root,-)
