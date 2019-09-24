@@ -4,26 +4,21 @@
 #
 Name     : R-pryr
 Version  : 0.1.4
-Release  : 59
+Release  : 60
 URL      : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Summary  : Tools for Computing on the Language
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-pryr-lib = %{version}-%{release}
-Requires: R-rlang
-Requires: R-stringi
+Requires: R-Rcpp
+Requires: R-stringr
 BuildRequires : R-Rcpp
-BuildRequires : R-assertthat
-BuildRequires : R-rlang
-BuildRequires : R-stringi
+BuildRequires : R-stringr
 BuildRequires : buildreq-R
 
 %description
-# pryr (rhymes with pry bar)
-[![Build Status](https://travis-ci.org/hadley/pryr.png?branch=master)](https://travis-ci.org/hadley/pryr)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/pryr)](https://cran.r-project.org/package=pryr)
-[![codecov.io](http://codecov.io/github/hadley/pryr/coverage.svg?branch=master)](http://codecov.io/github/hadley/pryr?branch=master)
+language at a deeper level.
 
 %package lib
 Summary: lib components for the R-pryr package.
@@ -40,13 +35,13 @@ lib components for the R-pryr package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552949392
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569292692
 
 %install
-export SOURCE_DATE_EPOCH=1552949392
+export SOURCE_DATE_EPOCH=1569292692
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -75,12 +70,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  pryr || :
+R CMD check --no-manual --no-examples --no-codoc pryr || :
 
 
 %files
