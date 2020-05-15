@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.4
-Release  : 64
+Release  : 65
 URL      : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Summary  : Tools for Computing on the Language
@@ -16,13 +16,9 @@ Requires: R-stringr
 BuildRequires : R-Rcpp
 BuildRequires : R-stringr
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-# pryr (rhymes with pry bar)
-[![Build Status](https://travis-ci.org/hadley/pryr.png?branch=master)](https://travis-ci.org/hadley/pryr)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/pryr)](https://cran.r-project.org/package=pryr)
-[![codecov.io](http://codecov.io/github/hadley/pryr/coverage.svg?branch=master)](http://codecov.io/github/hadley/pryr?branch=master)
+language at a deeper level.
 
 %package lib
 Summary: lib components for the R-pryr package.
@@ -34,21 +30,22 @@ lib components for the R-pryr package.
 
 %prep
 %setup -q -c -n pryr
+cd %{_builddir}/pryr
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571879680
+export SOURCE_DATE_EPOCH=1589584157
 
 %install
-export SOURCE_DATE_EPOCH=1571879680
+export SOURCE_DATE_EPOCH=1589584157
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
