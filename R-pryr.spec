@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.4
-Release  : 70
+Release  : 71
 URL      : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pryr_0.1.4.tar.gz
 Summary  : Tools for Computing on the Language
@@ -37,10 +37,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589584157
+export SOURCE_DATE_EPOCH=1620764276
 
 %install
-export SOURCE_DATE_EPOCH=1589584157
+export SOURCE_DATE_EPOCH=1620764276
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -113,4 +113,3 @@ R CMD check --no-manual --no-examples --no-codoc pryr || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/pryr/libs/pryr.so
 /usr/lib64/R/library/pryr/libs/pryr.so.avx2
-/usr/lib64/R/library/pryr/libs/pryr.so.avx512
