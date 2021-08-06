@@ -4,7 +4,7 @@
 #
 Name     : R-pryr
 Version  : 0.1.5
-Release  : 75
+Release  : 76
 URL      : https://cran.r-project.org/src/contrib/pryr_0.1.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pryr_0.1.5.tar.gz
 Summary  : Tools for Computing on the Language
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-pryr-lib = %{version}-%{release}
 Requires: R-Rcpp
+Requires: R-lobstr
 Requires: R-stringr
 BuildRequires : R-Rcpp
 BuildRequires : R-lobstr
@@ -38,10 +39,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1628264258
+export SOURCE_DATE_EPOCH=1628266913
 
 %install
-export SOURCE_DATE_EPOCH=1628264258
+export SOURCE_DATE_EPOCH=1628266913
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
